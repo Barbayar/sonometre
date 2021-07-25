@@ -55,6 +55,7 @@ func (s *Submitter) submit() {
 	var metric datadog.Metric
 
 	metric.SetMetric(s.metricName)
+	metric.SetType("gauge")
 
 	s.mu.Lock()
 	for _, point := range s.buffer {
