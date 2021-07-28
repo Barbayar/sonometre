@@ -8,7 +8,7 @@ import (
 	"gopkg.in/zorkian/go-datadog-api.v2"
 )
 
-// Submitter TODO
+// Submitter Datadog metric point submitter
 type Submitter struct {
 	client     *datadog.Client
 	metricName string
@@ -16,7 +16,7 @@ type Submitter struct {
 	buffer     [][2]float64
 }
 
-// NewSubmitter TODO
+// NewSubmitter creates a new Datadog metric point submitter
 func NewSubmitter(apiKey string, metricName string) *Submitter {
 	return &Submitter{
 		client:     datadog.NewClient(apiKey, ""),
@@ -25,7 +25,7 @@ func NewSubmitter(apiKey string, metricName string) *Submitter {
 	}
 }
 
-// Submit TODO
+// Submit collects the data from channel `in` for 1 minute, then submits to Datadog
 func (s *Submitter) Submit(in <-chan [2]float64) <-chan struct{} {
 	done := make(chan struct{})
 	ticker := time.NewTicker(time.Minute)

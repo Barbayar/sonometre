@@ -13,18 +13,19 @@ const (
 	slm25Value       uint16 = 0x0105
 )
 
-// Reader TODO
+// Reader USB data reader
 type Reader struct {
 	dev *gousb.Device
 }
 
-// NewReader TODO
+// NewReader creates a new USB data reader
 func NewReader(dev *gousb.Device) *Reader {
 	return &Reader{
 		dev: dev,
 	}
 }
 
+// Read reads the data from USB every 1 second, and writes the result into channel `out`
 func (r *Reader) Read(stop <-chan struct{}) chan [2]float64 {
 	out := make(chan [2]float64, 1000)
 
