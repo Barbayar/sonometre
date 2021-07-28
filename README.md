@@ -6,7 +6,7 @@
 DD_METRIC_NAME=home.backyard.sound_level DD_API_KEY=xxxxxxxxx ./sonometre
 ```
 
-P.S. Only works on Linux
+P.S. Only works on Linux (tested on Rapsberry Pi 4)
 
 # Device
 **Brand:** GAIN EXPRESS
