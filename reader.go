@@ -35,7 +35,7 @@ func (r *Reader) Read(stop <-chan struct{}) chan [2]float64 {
 		defer ticker.Stop()
 
 		response := make([]byte, 64)
-		for true {
+		for {
 			select {
 			case <-stop:
 				return
